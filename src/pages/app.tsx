@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { actionCreators } from "../redux/module/app";
+import { actionCreators } from "../redux/modules/app";
 
 class AppBase extends React.Component<any, any> {
   componentDidMount() {
@@ -8,7 +8,18 @@ class AppBase extends React.Component<any, any> {
   }
 
   render() {
-    return <div>hello, {JSON.stringify(this.props.app)}</div>;
+    return (
+      <div>
+        hello, {JSON.stringify(this.props.app)}{" "}
+        <button
+          onClick={() => {
+            this.props.fetch("hogee");
+          }}
+        >
+          fetch data
+        </button>
+      </div>
+    );
   }
 }
 

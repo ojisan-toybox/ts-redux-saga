@@ -4,7 +4,7 @@ const FETCH_DATA_START = "app/fetch_data_start";
 const FETCH_DATA_SUCCESS = "app/fetch_data_success";
 const FETCH_DATA_FAIL = "app/fetch_data_fail";
 
-const actionTypes = {
+export const actionTypes = {
   FETCH_DATA_START,
   FETCH_DATA_SUCCESS,
   FETCH_DATA_FAIL
