@@ -1,2 +1,9 @@
 # ts-redux-saga
-redux-sagaとTSを今やるならどうなるんだろうって試したくなった！
+
+redux-saga と TS を今やるならどうなるんだろうって試したくなった！
+
+```
+$ yarn install
+
+$ yarn dev
+```
