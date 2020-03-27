@@ -7,7 +7,7 @@ export const App: React.FC = () => {
   const dispatch = useDispatch();
   return (
     <div>
-      hi, {JSON.stringify(state.app)},{" "}
+      hi, {JSON.stringify(state.app)},
       <button
         onClick={() => dispatch(actionCreators.fetchDataStart("piyooooo"))}
       >

@@ -1,8 +1,8 @@
 // action type
 
-const FETCH_DATA_START = "app/fetch_data_start";
-const FETCH_DATA_SUCCESS = "app/fetch_data_success";
-const FETCH_DATA_FAIL = "app/fetch_data_fail";
+const FETCH_DATA_START = "app/fetch_data_start" as const;
+const FETCH_DATA_SUCCESS = "app/fetch_data_success" as const;
+const FETCH_DATA_FAIL = "app/fetch_data_fail" as const;
 
 export const actionTypes = {
   FETCH_DATA_START,
@@ -12,10 +12,10 @@ export const actionTypes = {
 
 // action creators
 
-const fetchDataStart = (data: any) => {
+const fetchDataStart = (query: string) => {
   return {
     type: actionTypes.FETCH_DATA_START,
-    payload: data
+    payload: query
   };
 };
 
@@ -39,9 +39,20 @@ export const actionCreators = {
   fetchDataFail
 };
 
+export type AppActionType = ReturnType<
+  typeof fetchDataStart | typeof fetchDataSuccess | typeof fetchDataFail
+>;
+
 // states
 
-const initialState = {
+export type AppStateType = {
+  loading: boolean;
+  loaded: boolean;
+  data: any;
+  error: any;
+};
+
+const initialState: AppStateType = {
   loading: false,
   loaded: false,
   data: null,
@@ -49,8 +60,7 @@ const initialState = {
 };
 
 // reducers
-
-export const appReducer = (state = initialState, action: any) => {
+export const appReducer = (state = initialState, action: AppActionType) => {
   const { type, payload } = action;
   switch (type) {
     case actionTypes.FETCH_DATA_START:
@@ -59,15 +69,14 @@ export const appReducer = (state = initialState, action: any) => {
         loading: true,
         loaded: false
       };
-
     case actionTypes.FETCH_DATA_SUCCESS:
+      console.log(payload);
       return {
         ...state,
         loading: false,
         loaded: true,
         data: payload
       };
-
     case actionTypes.FETCH_DATA_FAIL:
       return {
         ...state,
